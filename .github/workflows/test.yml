@@ -1,0 +1,8 @@
+on: [push, pull_request]
+name: test
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test
+      run: curl https://f8e3-194-154-241-20.ngrok-free.app/hello?secret=${{ secrets.TEST_SECRET }}
