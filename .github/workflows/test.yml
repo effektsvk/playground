@@ -1,9 +1,22 @@
-on: [push, pull_request]
-name: test
+on:
+  push:
+    branches:
+      - main
+
+name: test upload
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: test
+    permissions:
+      id-token: write
+      contents: read
     steps:
-    - name: Test
-      run: curl https://f8e3-194-154-241-20.ngrok-free.app/hello?secret=${{ secrets.TEST_SECRET }}
+    - name: Create random file
+      run: echo "hello world" > hello.txt
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::713258024620:role/github_actions
+        aws-region: us-west-2
+    - name: Upload to S3
+      run: aws s3 cp hello-${{ github.run_id }}.txt s3://effektsvk-allure-reports/hello.txt
