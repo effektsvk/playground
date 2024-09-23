@@ -16,7 +16,7 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::713258024620:role/github_actions
+        role-to-assume: arn:aws:iam::713258024620:role/github_actions_role
         aws-region: us-west-2
     - name: Upload to S3
       run: aws s3 cp hello-${{ github.run_id }}.txt s3://effektsvk-allure-reports/hello.txt
