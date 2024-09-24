@@ -33,6 +33,7 @@ initialize_counter
 
 # Read the current counter
 COUNTER=$(get_current_counter)
+increment_counter
 
 # Define branch and file names
 BRANCH_NAME="test${COUNTER}"
@@ -77,7 +78,7 @@ sleep 2
 
 # Merge the Pull Request using GitHub CLI
 echo "Merging Pull Request..."
-gh pr merge --auto --delete-branch
+gh pr merge --squash --delete-branch
 echo "Pull Request merged and branch '$BRANCH_NAME' deleted."
 
 # Switch back to the default branch
@@ -85,7 +86,7 @@ git checkout "$DEFAULT_BASE_BRANCH"
 echo "Switched back to branch '$DEFAULT_BASE_BRANCH'."
 
 # Increment and save the counter
-NEXT_COUNTER=$(increment_counter "$COUNTER")
-echo "Counter updated to $NEXT_COUNTER."
+# NEXT_COUNTER=$(increment_counter "$COUNTER")
+# echo "Counter updated to $NEXT_COUNTER."
 
 echo "=== Process Completed Successfully ==="
