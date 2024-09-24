@@ -22,18 +22,21 @@ get_current_counter() {
 
 # Function to increment and save the counter
 increment_counter() {
+    echo Incrementing...
     local current=$1
     local next=$((current + 1))
     echo "$next" > "$COUNTER_FILE"
-    echo "$next"
+    echo "Current: $current"
+    echo "Next: $next"
+    COUNTER=$next
 }
 
 # Initialize counter if necessary
 initialize_counter
 
-# Read the current counter
 COUNTER=$(get_current_counter)
-increment_counter
+increment_counter "$COUNTER"
+echo Counter: $COUNTER
 
 # Define branch and file names
 BRANCH_NAME="test${COUNTER}"
