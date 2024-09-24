@@ -8,7 +8,6 @@ jobs:
   test:
     name: Run CD
     runs-on: ubuntu-latest
-    environment: test-env
     steps:
       - uses: effektsvk/github-workflows/.github/workflows/_continuous-delivery.yml@main
         with:
