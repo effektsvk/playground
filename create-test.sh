@@ -52,7 +52,8 @@ echo "This is test file number ${COUNTER}." > "$FILE_NAME"
 echo "Created file '$FILE_NAME'."
 
 # Stage the new file
-git add "$FILE_NAME"
+# git add "$FILE_NAME"
+git add .
 echo "Staged '$FILE_NAME' for commit."
 
 # Commit the new file
@@ -67,7 +68,7 @@ echo "Pushed branch '$BRANCH_NAME' to remote."
 PR_TITLE="Add ${FILE_NAME}"
 PR_BODY="This PR adds ${FILE_NAME} for testing purposes."
 echo "Creating Pull Request..."
-PR_URL=$(gh pr create --title "$PR_TITLE" --body "$PR_BODY" --head "$BRANCH_NAME" --base "$DEFAULT_BASE_BRANCH" --json url --jq .url)
+gh pr create --title "$PR_TITLE" --body "$PR_BODY" --head "$BRANCH_NAME" --base "$DEFAULT_BASE_BRANCH"
 
 echo "Pull Request created: $PR_URL"
 
