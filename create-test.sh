@@ -84,10 +84,6 @@ echo "Merging Pull Request..."
 gh pr merge --squash --delete-branch
 echo "Pull Request merged and branch '$BRANCH_NAME' deleted."
 
-# Switch back to the default branch
-git checkout "$DEFAULT_BASE_BRANCH"
-echo "Switched back to branch '$DEFAULT_BASE_BRANCH'."
-
 # Increment and save the counter
 # NEXT_COUNTER=$(increment_counter "$COUNTER")
 # echo "Counter updated to $NEXT_COUNTER."
