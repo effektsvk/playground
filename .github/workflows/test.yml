@@ -6,7 +6,7 @@ on:
 name: test upload
 jobs:
   test:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Run CD
-      uses: effektsvk/github-workflows/.github/workflows/_continuous-delivery.yml@main
+    name: Run CD
+    uses: effektsvk/github-workflows/.github/workflows/_continuous-delivery.yml@main
+    with:
+      trunk_branch_name: main
